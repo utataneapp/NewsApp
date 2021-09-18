@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, FlatList, SafeAreaView } from 'react-native';
 import ListItem from './components/ListItem';
-import articles from './dummies/articles.json'
+import dummyArticles from './dummies/articles.json'
+import Constans from 'expo-constants'
 
 export default function App() {
+  // envファイルにあるものをすべて環境変数にロードする
+  require('dotenv').config()
+
+  const [articles, setArticles] = useState([])
+
+  useEffect(()=>{
+    alert(Constans.manifest.extra.newsApiKey)
+    const timer = setTimeout(() => {
+      setArticles(dummyArticles)
+    }, 2000);
+    return ()=>{
+      clearTimeout(timer);
+    }
+  },[])
+
   const renderItem = ({ item }) => (
     // mapメソッド的な機能を持つコンポーネント
     <ListItem
