@@ -1,26 +1,26 @@
 import React from 'react';
+import { View, StyleSheet, FlatList, SafeAreaView } from 'react-native';
 import ListItem from './components/ListItem';
-import { View, StyleSheet } from 'react-native';
+import articles from './dummies/articles.json'
 
 export default function App() {
+  const renderItem = ({ item }) => (
+    // mapメソッド的な機能を持つコンポーネント
+    <ListItem
+      author={item.author}
+      imageUrl={item.urlToImage}
+      title={item.title}
+    />
+  );
+
   return (
-    <View style={styles.container}>
-      <ListItem
-        author="SampleNews"
-        imageUrl="https://picsum.photos/200/300"
-        title="Choose something you like to do. I know it’s a cliche, and you’ve heard it over and over. But the reason is, you’re going to have to work long and hard to achieve any success. You better like it or life is going to be terrible."
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={articles}
+        renderItem={renderItem}
+        keyExtractor={(index) => index.toString()}
       />
-      <ListItem
-        author="SampleNews"
-        imageUrl="https://picsum.photos/200/300"
-        title="Choose something you like to do. I know it’s a cliche, and you’ve heard it over and over. But the reason is, you’re going to have to work long and hard to achieve any success. You better like it or life is going to be terrible."
-      />
-      <ListItem
-        author="SampleNews"
-        imageUrl="https://picsum.photos/200/300"
-        title="Choose something you like to do. I know it’s a cliche, and you’ve heard it over and over. But the reason is, you’re going to have to work long and hard to achieve any success. You better like it or life is going to be terrible."
-      />
-    </View>
+    </SafeAreaView>
   )
 }
 
