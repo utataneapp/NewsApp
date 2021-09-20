@@ -5,7 +5,7 @@ import axios from 'axios';
 import Constants from 'expo-constants';
 
 
-const URL = "https://newsapi.org/v2/top-headlines?country=jp&apiKey=ae4433f5cd42477382798b703b5afc90"
+const URL = "https://newsapi.org/v2/top-headlines?country=jp&apiKey=?"
 
 const HomeScreen = (props) => {
   const [articles, setArticles] = useState([])
