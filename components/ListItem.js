@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
 const ListItem = (props) => {
-  const { author, imageUrl, title } = props
+  const { author, imageUrl, title, onPress } = props
   return (
-    <View style={styles.box}>
+    <TouchableOpacity style={styles.box} onPress={onPress}>
       <View style={styles.leftBox}>
+        {!!imageUrl &&(
         <Image
           style={{
             height: 100,
@@ -15,8 +16,8 @@ const ListItem = (props) => {
             uri: imageUrl,
           }}
         />
+        )}
       </View>
-
       <View style={styles.rightBox}>
         <Text numberOfLines={3} style={styles.text}>
           {title}
@@ -25,7 +26,7 @@ const ListItem = (props) => {
           {author}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -34,7 +35,7 @@ export default ListItem;
 const styles = StyleSheet.create({
   box: {
     flexDirection: "row",
-    height: "100px",
+    height: 100,
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
