@@ -3,6 +3,7 @@ import { SafeAreaView, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { WebView } from 'react-native-webview';
 import { useDispatch } from 'react-redux'
 import { addClip, deleteClip } from '../store/actions/user'
+import 'react-native-gesture-handler';
 
 const ArticleScreen = (props) =>{
   const { route } = props;
